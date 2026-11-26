@@ -152,12 +152,21 @@
 
                 <!-- Quick Admin Jump -->
                 <div>
-                    <a href="{{ route('admin.products.create') }}" 
-                       class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-800 bg-amber-100/80 hover:bg-amber-200/80 px-4 py-2 rounded-xl transition">
-                        <i class="fa-solid fa-plus-circle"></i>
-                        <span>Tambah Produk Baru (Admin)</span>
-                    </a>
+                    @auth
+                        <a href="{{ route('admin.products.create') }}" 
+                           class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-800 bg-amber-100/80 hover:bg-amber-200/80 px-4 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-plus-circle"></i>
+                            <span>Tambah Produk Baru (Admin)</span>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" 
+                           class="inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-amber-700 hover:text-amber-800 bg-amber-100/80 hover:bg-amber-200/80 px-4 py-2 rounded-xl transition">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Kelola Produk (Login)</span>
+                        </a>
+                    @endauth
                 </div>
+
             </div>
 
             <!-- Filter Kategori Interaktif -->

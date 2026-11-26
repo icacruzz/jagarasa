@@ -14,11 +14,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/produk/{slug}', [HomeController::class, 'show'])->name('produk.show');
 
-// Halaman Admin (Prefix /admin)
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/', function () {
-        return redirect()->route('admin.products.index');
-    });
+// Autentikasi Admin
+Route::get('/login', [\App\Http\Controllers\Auth\LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [\App\Http\Controllers\Auth\LoginController::class, 'login'])->name('login.post');
+Route::post('/logout', [\App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');
+
+// Halaman Admin (Prefix /admin, Dilindungi Middleware Auth)
+Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
+    Route::get('/', [\App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/laporan-penjualan', [\App\Http\Controllers\Admin\DashboardController::class, 'salesReport'])->name('reports.sales');
 
     Route::resource('produk', ProductController::class)
         ->names([
@@ -34,3 +38,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
             'produk' => 'product',
         ]);
 });
+

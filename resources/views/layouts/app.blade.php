@@ -73,24 +73,86 @@
                     </div>
                 </a>
 
-                <!-- Navigation Links -->
+                <!-- Navigation Links (Desktop) -->
                 <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
                     <a href="{{ route('home') }}#hero" class="text-amber-900 hover:text-amber-600 transition">Beranda</a>
                     <a href="{{ route('home') }}#tentang" class="text-amber-900 hover:text-amber-600 transition">Tentang Kami</a>
                     <a href="{{ route('home') }}#katalog" class="text-amber-900 hover:text-amber-600 transition">Katalog Oleh-Oleh</a>
                 </nav>
 
-                <!-- Action Button -->
-                <div class="flex items-center gap-3">
-                    <a href="{{ route('admin.products.index') }}" 
-                       class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-md hover:from-amber-600 hover:to-amber-700 hover:shadow-lg transition transform hover:-translate-y-0.5">
-                        <i class="fa-solid fa-gear"></i>
-                        <span>Kelola Produk</span>
-                    </a>
+                <!-- Action Button & Hamburger for Mobile -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    @auth
+                        <a href="{{ route('admin.dashboard') }}" 
+                           class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold text-xs sm:text-sm px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl shadow-md hover:from-amber-600 hover:to-amber-700 transition">
+                            <i class="fa-solid fa-gauge-high"></i>
+                            <span class="hidden sm:inline">Dashboard</span>
+                        </a>
+                    @else
+                        <a href="{{ route('login') }}" 
+                           class="inline-flex items-center gap-2 bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold text-xs sm:text-sm px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl shadow-md hover:from-amber-600 hover:to-amber-700 transition">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>Admin Login</span>
+                        </a>
+                    @endauth
+
+                    <!-- Mobile Hamburger Button -->
+                    <button type="button" 
+                            onclick="toggleMobileMenu()"
+                            class="md:hidden p-2 rounded-xl text-amber-900 hover:bg-amber-100 focus:outline-hidden transition"
+                            aria-label="Toggle menu">
+                        <i id="menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
                 </div>
+            </div>
+
+            <!-- Mobile Menu Dropdown -->
+            <div id="mobile-menu" class="hidden md:hidden border-t border-amber-200/80 py-4 px-2 space-y-2 bg-white/95 rounded-b-2xl shadow-lg">
+                <a href="{{ route('home') }}#hero" 
+                   onclick="toggleMobileMenu()" 
+                   class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-950 hover:bg-amber-50 transition">
+                    <i class="fa-solid fa-house text-amber-600 mr-2 w-4"></i> Beranda
+                </a>
+                <a href="{{ route('home') }}#tentang" 
+                   onclick="toggleMobileMenu()" 
+                   class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-950 hover:bg-amber-50 transition">
+                    <i class="fa-solid fa-circle-info text-amber-600 mr-2 w-4"></i> Tentang Kami
+                </a>
+                <a href="{{ route('home') }}#katalog" 
+                   onclick="toggleMobileMenu()" 
+                   class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-950 hover:bg-amber-50 transition">
+                    <i class="fa-solid fa-boxes-stacked text-amber-600 mr-2 w-4"></i> Katalog Oleh-Oleh
+                </a>
+                @auth
+                    <a href="{{ route('admin.dashboard') }}" 
+                       class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 transition">
+                        <i class="fa-solid fa-gauge text-amber-600 mr-2 w-4"></i> Dashboard Admin
+                    </a>
+                @else
+                    <a href="{{ route('login') }}" 
+                       class="block px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-700 bg-amber-50 hover:bg-amber-100 transition">
+                        <i class="fa-solid fa-right-to-bracket text-amber-600 mr-2 w-4"></i> Masuk Admin
+                    </a>
+                @endauth
             </div>
         </div>
     </header>
+
+    <script>
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            }
+        }
+    </script>
+
 
     <!-- MAIN CONTENT -->
     <main class="flex-grow">

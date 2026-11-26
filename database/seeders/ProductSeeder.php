@@ -23,7 +23,7 @@ class ProductSeeder extends Seeder
                 'stok'        => 45,
                 'berat_gram'  => 250,
                 'deskripsi'   => 'Keripik pisang kepok pilihan khas Lampung yang dipotong tipis renyah dan dibalut bubuk cokelat premium tebal yang lumer di mulut.',
-                'gambar'      => 'images/products/pisang-cokelat.jpg',
+                'gambar'      => 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?w=700&auto=format&fit=crop&q=80',
             ],
             [
                 'kategori'    => 'Keripik Pisang',
@@ -33,7 +33,7 @@ class ProductSeeder extends Seeder
                 'stok'        => 30,
                 'berat_gram'  => 250,
                 'deskripsi'   => 'Perpaduan gurihnya keju dan manisnya susu bubuk yang membalut sempurna keripik pisang kepok kuning asli Pesawaran, Lampung.',
-                'gambar'      => 'images/products/pisang-keju.jpg',
+                'gambar'      => 'https://images.unsplash.com/photo-1599490659213-e2b9527bd087?w=700&auto=format&fit=crop&q=80',
             ],
             [
                 'kategori'    => 'Keripik Singkong',
@@ -43,7 +43,7 @@ class ProductSeeder extends Seeder
                 'stok'        => 50,
                 'berat_gram'  => 200,
                 'deskripsi'   => 'Singkong lokal pilihan yang digoreng garing lalu dimasak dengan bumbu karamel cabai merah asli, menghasilkan sensasi pedas manis yang bikin ketagihan.',
-                'gambar'      => 'images/products/singkong-balado.jpg',
+                'gambar'      => 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=700&auto=format&fit=crop&q=80',
             ],
             [
                 'kategori'    => 'Kemplang & Olahan Ikan',
@@ -53,7 +53,7 @@ class ProductSeeder extends Seeder
                 'stok'        => 25,
                 'berat_gram'  => 200,
                 'deskripsi'   => 'Kerupuk kemplang tradisional yang dipanggang di atas bara api tanpa minyak, terbuat dari ikan tenggiri segar lengkap dengan sambal terasi khas Lampung di dalam kemasan.',
-                'gambar'      => 'images/products/kemplang-panggang.jpg',
+                'gambar'      => 'https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=700&auto=format&fit=crop&q=80',
             ],
             [
                 'kategori'    => 'Kopi Lampung',
@@ -63,8 +63,9 @@ class ProductSeeder extends Seeder
                 'stok'        => 40,
                 'berat_gram'  => 200,
                 'deskripsi'   => 'Biji kopi Robusta petik merah dari dataran tinggi Liwa, Lampung Barat. Memiliki aroma cokelat yang kuat, body tebal, dan rasa pahit yang mantap.',
-                'gambar'      => 'images/products/kopi-robusta.jpg',
+                'gambar'      => 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=700&auto=format&fit=crop&q=80',
             ],
+
         ];
 
         foreach ($products as $p) {

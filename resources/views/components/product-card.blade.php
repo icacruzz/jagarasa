@@ -1,12 +1,13 @@
 @props(['product'])
 
 <div class="bg-white rounded-2xl border border-amber-200/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col h-full overflow-hidden group hover:-translate-y-1">
-    <!-- Gambar Produk -->
-    <div class="relative overflow-hidden aspect-4/3 bg-amber-50">
+    <!-- Gambar Produk Fixed Height -->
+    <div class="relative overflow-hidden h-52 sm:h-56 w-full bg-amber-50">
         <img src="{{ $product->gambar_url }}" 
              alt="{{ $product->nama_produk }}"
              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
              onerror="this.src='{{ asset('images/logo-jagarasa.png') }}'">
+
         
         <!-- Category Badge -->
         <div class="absolute top-3 left-3">
@@ -40,13 +41,13 @@
                 </span>
             </div>
 
-            <h3 class="text-base sm:text-lg font-bold text-amber-950 font-heading line-clamp-2 group-hover:text-amber-600 transition">
+            <h3 class="text-base font-bold text-amber-950 font-heading line-clamp-2 min-h-[3rem] group-hover:text-amber-600 transition">
                 <a href="{{ route('produk.show', $product->slug) }}">
                     {{ $product->nama_produk }}
                 </a>
             </h3>
 
-            <p class="text-xs sm:text-sm text-amber-900/75 mt-2 line-clamp-2 leading-relaxed">
+            <p class="text-xs sm:text-sm text-amber-900/75 mt-2 line-clamp-2 min-h-[2.5rem] leading-relaxed">
                 {{ $product->deskripsi }}
             </p>
         </div>
